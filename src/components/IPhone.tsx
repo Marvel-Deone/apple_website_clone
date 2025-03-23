@@ -10,7 +10,6 @@ import * as THREE from 'three'
 import { useEffect, useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { JSX } from 'react/jsx-dev-runtime'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -81,7 +80,15 @@ type GLTFResult = GLTF & {
   }
 }
 
-export default function Model(props: JSX.IntrinsicElements['group']) {
+interface ModelProps extends React.ComponentPropsWithoutRef<'group'> {
+  item: {
+    img: string;
+    color: string[];
+  };
+  size: string;
+}
+
+export default function Model(props: ModelProps) {
   const { nodes, materials } = useGLTF('/models/scene.glb') as unknown as GLTFResult
 
   const texture = useTexture(props.item.img);

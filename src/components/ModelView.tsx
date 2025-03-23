@@ -1,6 +1,6 @@
 import { OrbitControls, PerspectiveCamera, View } from "@react-three/drei"
 import Lights from "./Lights"
-import IPhone from "./iPhone"
+import IPhone from "./IPhone"
 import { RefObject, Suspense } from "react"
 import * as THREE from 'three'
 import Loader from "./Loader"
@@ -18,6 +18,7 @@ interface ModelViewProps {
         img: string;
     };
 }
+
 
 const ModelView: React.FC<ModelViewProps> = ({ index, groupRef, gsapType, controlRef, setRotationState, size, item }) => {
     return (
