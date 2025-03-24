@@ -44,7 +44,7 @@ const ModelView: React.FC<ModelViewProps> = ({ index, groupRef, gsapType, contro
                 onEnd={() => setRotationState(controlRef.current.getAzimuthalAngle())}
             />
 
-            <group ref={groupRef} name={`${index === 1} ? 'small' : 'large'`}>
+            <group ref={groupRef} name={`${index === 1} ? 'small' : 'large'`} position={[0, 0 ,0]}>
                 <Suspense fallback={<Loader />}>
                     <IPhone
                         scale={index === 1 ? [15, 15, 15] : [17, 17, 17] }

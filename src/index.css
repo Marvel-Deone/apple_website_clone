@@ -47,6 +47,10 @@ canvas {
   background-color: #101010;
 }
 
+.text-blue {
+  color: #2997FF;
+}
+
 @layer utilities {
   .flex-center {
     @apply flex items-center justify-center
