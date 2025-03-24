@@ -14,7 +14,7 @@ interface ScrollProps {
     [key: string]: any;
 }
 
-export const animateWithGsap = (target: string | Element, animationProps?: any, scrollProps?: ScrollProps) => {
+export const animateWithGsap = (target: string | Element, animationProps?: AnimationProps, scrollProps?: ScrollProps) => {
     gsap.to(target, {
         ...animationProps,
         scrollTrigger: {
