@@ -46,7 +46,7 @@ const VideoCarousel = () => {
         }
     }, [startPlay, videoId, isPlaying, loadedData]);
 
-    const handleLoadedMetadata = (i: number, e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLVideoElement>) => {
         setLoadedData((pre) => [...pre, e]);
     }
 
@@ -117,7 +117,7 @@ const VideoCarousel = () => {
         }
       }, [videoId, startPlay]);
 
-    const handleProcess = (type: string, i: number) => {
+    const handleProcess = (type: string, i: any) => {
         switch (type) {
             case 'video-end':
                 setVideo((pre) => ({ ...pre, isEnd: false, videoId: i + 1 }));
@@ -151,9 +151,9 @@ const VideoCarousel = () => {
                                         setVideo((preVideo) => ({ ...preVideo, isPlaying: true }));
                                     }}
                                     onEnded={() => {
-                                        i !== 3 ? handleProcess('video-end', i) : handleProcess('video-last');
+                                        i !== 3 ? handleProcess('video-end', i) : handleProcess('video-last', '');
                                     }}
-                                    onLoadedMetadata={(e) => handleLoadedMetadata(i, e)}
+                                    onLoadedMetadata={(e) => handleLoadedMetadata(e)}
                                 >
                                     <source src={list.video} type="video/mp4" />
                                 </video>
@@ -182,7 +182,7 @@ const VideoCarousel = () => {
 
                 <button className="control-btn">
                     <img src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg} alt={isLastVideo ? 'replay' : !isPlaying ? 'play' : 'pause'}
-                        onClick={isLastVideo ? () => handleProcess('video-reset') : !isPlaying ? () => handleProcess('play') : () => handleProcess('pause')}
+                        onClick={isLastVideo ? () => handleProcess('video-reset', '') : !isPlaying ? () => handleProcess('play', '') : () => handleProcess('pause', '')}
                     />
                 </button>
             </div>
